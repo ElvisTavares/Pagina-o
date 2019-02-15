@@ -5,25 +5,25 @@
 $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
 
 //seleciona os arquivos tabela
-$result_curso = "SELECT * FROM paginacao";
-$resultado_curso = mysqli_query($conn, $result_curso);
+$result_nome = "SELECT * FROM paginacao";
+$resultado_nome = mysqli_query($conn, $result_nome);
 
 //Conta o total de reg
-$total_cursos = mysqli_num_rows($resultado_curso);
+$total_nome = mysqli_num_rows($resultado_nome);
 
 //Seta a quantidade de registros
 $quantidade_pg = 6;
 
 //calcular o número de pagina necessárias para apresentar os cursos
-$num_pagina = ceil($total_cursos/$quantidade_pg);
+$num_pagina = ceil($total_nome/$quantidade_pg);
 
 //Calcula o inicio da visualizacao
 $incio = ($quantidade_pg*$pagina)-$quantidade_pg;
 
 //Selecionar os registros a serem apresentado na página
-$result_cursos = "SELECT * FROM paginacao limit $incio, $quantidade_pg";
-$resultado_cursos = mysqli_query($conn, $result_cursos);
-$total_cursos = mysqli_num_rows($resultado_cursos);
+$result_nome = "SELECT * FROM paginacao limit $incio, $quantidade_pg";
+$resultado_nome = mysqli_query($conn, $result_nome);
+$total_nome  = mysqli_num_rows($resultado_nome);
 ?>
 
 <!DOCTYPE html>
@@ -39,13 +39,13 @@ $total_cursos = mysqli_num_rows($resultado_cursos);
 	<body>
 		<div class="container theme-showcase" role="main">
 			<div class="page-header">
-				<h1>Cursos</h1>
+				<h1>Nomes</h1>
 			</div>
 			
-				<?php while($rows_cursos = mysqli_fetch_assoc($resultado_cursos)){ 
+				<?php while($rows_nome = mysqli_fetch_assoc($resultado_nome)){ 
 					
-						 echo $rows_cursos['id']."<br>"; 
-                       echo $rows_cursos['nome']."<br><hr>"; 
+						 echo $rows_nome['id']."<br>"; 
+                       echo $rows_nome['nome']."<br><hr>"; 
 							
 							
                  } 
